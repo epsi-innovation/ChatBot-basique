@@ -1,21 +1,19 @@
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+const readline = require('readline');
 
 
-var http = require("http");
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout
+});
 
-http.createServer(function (request, response) {
-   // Send the HTTP header 
-   // HTTP Status: 200 : OK
-   // Content Type: text/plain
-   response.writeHead(200, {'Content-Type': 'text/plain'});
-   
-   // Send the response body as "Hello World"
-   response.end('Hello World\n');
-}).listen(8081);
-
-// Console will print the message
-console.log('Server running at http://127.0.0.1:8081/');
+rl.question('le projet est-il cool ? ', (answer) => {
+  // TODO: Log the answer in a database
+  if(answer==="oui"){
+      console.log('on le savait déjà');
+  }else if(answer==="non"){
+      console.log('t\'es viré');
+  }else{
+      console.log('personne comprends ton charabia');
+  }
+  rl.close();
+});

@@ -11,7 +11,7 @@
     "author": "Pierre Boucher",
     "contributors": [],
     "dependencies": {},
-	"scripts": {
-		"start": "node main.js"
-	}
+    "scripts": {
+        "start": "node main.js"
+    }
 }

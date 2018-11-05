@@ -6,14 +6,25 @@ const rl = readline.createInterface({
   output: process.stdout
 });
 
-rl.question('le projet est-il cool ? ', (answer) => {
-  // TODO: Log the answer in a database
-  if(answer==="oui"){
-      console.log('on le savait déjà');
-  }else if(answer==="non"){
-      console.log('t\'es viré');
-  }else{
-      console.log('personne comprends ton charabia');
-  }
-  rl.close();
-});
+var recursiveAsyncReadLine = function () {
+    rl.question('', (answer) => {
+      var laQuestion = answer.toString();
+      console.log(verifTheme(laQuestion)); 
+      recursiveAsyncReadLine();
+    });
+};
+recursiveAsyncReadLine();
+
+function verifTheme(phrase) {
+    var reponseRetournee = null;
+    
+    if(phrase.indexOf('meteo') >= 0){
+      reponseRetournee = 'il fait beau';
+    }else if(phrase.indexOf('heure') >= 0){
+      reponseRetournee = 'il est 13h';
+    }else{
+      reponseRetournee = 'pourrais-tu reformuler ?';
+    }
+    return reponseRetournee;
+}
+

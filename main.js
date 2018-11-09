@@ -6,33 +6,33 @@ const rl = readline.createInterface({
   output: process.stdout
 });
 
-var recursiveAsyncReadLine = function () {
+const recursiveAsyncReadLine = function () {
     rl.question('', (answer) => {
-      var laQuestion = answer.toString();
-      console.log(verifTheme(laQuestion)); 
+      const theQuestion = answer.toString();
+      console.log(verifTheme(theQuestion)); 
       recursiveAsyncReadLine();
     });
 };
 recursiveAsyncReadLine();
 
 function verifTheme(phrase) {
-    var reponseRetournee = null;
+    var answerReturn = null;
     
-    var meteo = ['temps', 'météo'];
-    var heure = ['heure', 'horloge'];
+    const meteo = ['temps', 'météo'];
+    const heure = ['heure', 'horloge'];
     
-    var words = phrase.split(' ');
+    const words = phrase.split(' ');
     
     for(var i=0;i<words.length;i++){
         if(meteo.indexOf(words[i]) >= 0){
-            reponseRetournee = 'il fait beau';
+            answerReturn = 'il fait beau';
         }else if(heure.indexOf(words[i]) >= 0){
-            reponseRetournee = 'il est 13h';
+            answerReturn = 'il est 13h';
         }
     }    
-    if(reponseRetournee===null){
-        reponseRetournee='pourrais-tu reformuler ?';
+    if(answerReturn===null){
+        answerReturn='pourrais-tu reformuler ?';
     }
-    return reponseRetournee;
+    return answerReturn;
 }
 
